@@ -1,0 +1,65 @@
+{
+    "name": "Match",
+    "type": "object",
+    "properties": {
+      "user1_email": {
+        "type": "string",
+        "description": "Email of first user"
+      },
+      "user2_email": {
+        "type": "string",
+        "description": "Email of second user"
+      },
+      "compatibility_score": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "AI-calculated compatibility score"
+      },
+      "compatibility_breakdown": {
+        "type": "object",
+        "properties": {
+          "lifestyle": {
+            "type": "number"
+          },
+          "schedule": {
+            "type": "number"
+          },
+          "cleanliness": {
+            "type": "number"
+          },
+          "social": {
+            "type": "number"
+          },
+          "interests": {
+            "type": "number"
+          }
+        },
+        "description": "Breakdown of compatibility by category"
+      },
+      "match_status": {
+        "type": "string",
+        "enum": [
+          "suggested",
+          "liked_by_user1",
+          "liked_by_user2",
+          "mutual",
+          "passed"
+        ],
+        "default": "suggested"
+      },
+      "last_message_date": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "is_archived": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "user1_email",
+      "user2_email",
+      "compatibility_score"
+    ]
+  }

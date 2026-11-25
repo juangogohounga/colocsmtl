@@ -1,0 +1,9 @@
+Copyright (c) 2026 Juan. All rights reserved.
+
+This source code is published for viewing and evaluation only, for example
+as part of a portfolio. No permission is granted to copy, modify, distribute,
+sublicense, host, or otherwise use this software or any part of it, in source
+or compiled form, without prior written permission from the copyright holder.
+
+Third-party packages listed in package.json and the shadcn/ui components in
+src/components/ui remain under their own licenses.

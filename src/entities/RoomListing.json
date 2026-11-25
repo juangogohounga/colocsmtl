@@ -1,0 +1,157 @@
+{
+    "name": "RoomListing",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Listing title"
+      },
+      "description": {
+        "type": "string"
+      },
+      "owner_email": {
+        "type": "string",
+        "description": "Email of the user who created this listing"
+      },
+      "listing_type": {
+        "type": "string",
+        "enum": [
+          "private_room",
+          "shared_room",
+          "entire_apartment"
+        ],
+        "description": "Type of accommodation"
+      },
+      "rent_amount": {
+        "type": "number",
+        "description": "Monthly rent in CAD"
+      },
+      "utilities_included": {
+        "type": "boolean"
+      },
+      "deposit_required": {
+        "type": "number",
+        "description": "Security deposit amount"
+      },
+      "neighborhood": {
+        "type": "string",
+        "enum": [
+          "le_plateau",
+          "rosemont",
+          "ndg",
+          "mile_end",
+          "verdun",
+          "hochelaga",
+          "villeray",
+          "downtown",
+          "outremont",
+          "griffintown",
+          "other"
+        ]
+      },
+      "address": {
+        "type": "string"
+      },
+      "available_from": {
+        "type": "string",
+        "format": "date"
+      },
+      "lease_duration": {
+        "type": "string",
+        "enum": [
+          "1_month",
+          "3_months",
+          "6_months",
+          "12_months",
+          "flexible"
+        ]
+      },
+      "bedrooms": {
+        "type": "number"
+      },
+      "bathrooms": {
+        "type": "number"
+      },
+      "square_feet": {
+        "type": "number"
+      },
+      "furnished": {
+        "type": "boolean"
+      },
+      "amenities": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "wifi",
+            "laundry",
+            "parking",
+            "gym",
+            "balcony",
+            "air_conditioning",
+            "dishwasher",
+            "pets_allowed",
+            "smoking_allowed",
+            "storage"
+          ]
+        }
+      },
+      "images": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of image URLs"
+      },
+      "rules": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "House rules"
+      },
+      "current_roommates": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "age": {
+              "type": "number"
+            },
+            "occupation": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Info about current roommates"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "available",
+          "pending",
+          "rented"
+        ],
+        "default": "available"
+      },
+      "views_count": {
+        "type": "number",
+        "default": 0
+      },
+      "is_featured": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "title",
+      "owner_email",
+      "listing_type",
+      "rent_amount",
+      "neighborhood",
+      "available_from"
+    ]
+  }

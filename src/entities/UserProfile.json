@@ -1,0 +1,241 @@
+{
+    "name": "UserProfile",
+    "type": "object",
+    "properties": {
+      "user_email": {
+        "type": "string",
+        "description": "Email of the user this profile belongs to"
+      },
+      "full_name": {
+        "type": "string"
+      },
+      "age": {
+        "type": "number"
+      },
+      "gender": {
+        "type": "string",
+        "enum": [
+          "male",
+          "female",
+          "non_binary",
+          "prefer_not_to_say"
+        ]
+      },
+      "phone": {
+        "type": "string"
+      },
+      "bio": {
+        "type": "string",
+        "description": "Short bio about yourself"
+      },
+      "profile_image_url": {
+        "type": "string"
+      },
+      "occupation": {
+        "type": "string",
+        "enum": [
+          "student",
+          "professional",
+          "freelancer",
+          "entrepreneur",
+          "other"
+        ]
+      },
+      "budget_min": {
+        "type": "number",
+        "description": "Minimum monthly rent budget in CAD"
+      },
+      "budget_max": {
+        "type": "number",
+        "description": "Maximum monthly rent budget in CAD"
+      },
+      "preferred_neighborhoods": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "le_plateau",
+            "rosemont",
+            "ndg",
+            "mile_end",
+            "verdun",
+            "hochelaga",
+            "villeray",
+            "downtown",
+            "outremont",
+            "griffintown",
+            "other"
+          ]
+        },
+        "description": "Preferred Montreal neighborhoods"
+      },
+      "move_in_date": {
+        "type": "string",
+        "format": "date"
+      },
+      "sleep_schedule": {
+        "type": "string",
+        "enum": [
+          "early_bird",
+          "night_owl",
+          "flexible"
+        ],
+        "description": "When do you typically sleep"
+      },
+      "cleanliness_level": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "1=Very Messy, 5=Very Clean"
+      },
+      "noise_tolerance": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 5,
+        "description": "1=Need Silence, 5=Love Noise"
+      },
+      "social_level": {
+        "type": "string",
+        "enum": [
+          "introvert",
+          "ambivert",
+          "extrovert"
+        ],
+        "description": "How social are you"
+      },
+      "guests_frequency": {
+        "type": "string",
+        "enum": [
+          "never",
+          "rarely",
+          "sometimes",
+          "often"
+        ],
+        "description": "How often do you have guests over"
+      },
+      "smoking": {
+        "type": "boolean",
+        "description": "Do you smoke"
+      },
+      "pets": {
+        "type": "boolean",
+        "description": "Do you have pets"
+      },
+      "pet_types": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Types of pets you have"
+      },
+      "diet_preferences": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "vegetarian",
+            "vegan",
+            "halal",
+            "kosher",
+            "no_restrictions"
+          ]
+        }
+      },
+      "languages": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "english",
+            "french",
+            "spanish",
+            "mandarin",
+            "arabic",
+            "other"
+          ]
+        }
+      },
+      "interests": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Hobbies and interests"
+      },
+      "vibe_tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "student",
+            "gamer",
+            "foodie",
+            "fitness_enthusiast",
+            "artist",
+            "musician",
+            "tech_savvy",
+            "eco_conscious",
+            "party_friendly",
+            "homebody",
+            "adventurer",
+            "bookworm"
+          ]
+        },
+        "description": "Lifestyle vibe tags"
+      },
+      "work_from_home": {
+        "type": "boolean",
+        "description": "Do you work from home"
+      },
+      "looking_for": {
+        "type": "string",
+        "enum": [
+          "room",
+          "roommate",
+          "both"
+        ],
+        "description": "What are you looking for"
+      },
+      "is_premium": {
+        "type": "boolean",
+        "default": false
+      },
+      "is_verified": {
+        "type": "boolean",
+        "default": false
+      },
+      "compatibility_preferences": {
+        "type": "object",
+        "properties": {
+          "preferred_gender": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "age_range_min": {
+            "type": "number"
+          },
+          "age_range_max": {
+            "type": "number"
+          },
+          "must_match_cleanliness": {
+            "type": "boolean"
+          },
+          "must_match_sleep_schedule": {
+            "type": "boolean"
+          },
+          "no_smoking": {
+            "type": "boolean"
+          },
+          "no_pets": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "required": [
+      "user_email",
+      "full_name"
+    ]
+  }
