@@ -71,10 +71,9 @@ You need Node 20+, the [Supabase CLI](https://supabase.com/docs/guides/cli) and 
 1. **Create a Supabase project** at <https://supabase.com/dashboard> (the free tier works).
 2. **Link it and create the database:**
    ```bash
-   supabase init      # creates supabase/config.toml; keeps the existing migrations and functions
    supabase login
    supabase link --project-ref <your-project-ref>
-   supabase db push
+   supabase db push --remote
    ```
 3. **Deploy the compatibility function:**
    ```bash

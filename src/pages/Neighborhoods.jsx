@@ -24,6 +24,21 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+// Shows the photo, or nothing (leaving the card's solid neighborhood color) if
+// there is no photo or it fails to load.
+function NeighborhoodImage({ src, alt }) {
+  const [failed, setFailed] = useState(false);
+  if (!src || failed) return null;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      onError={() => setFailed(true)}
+      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+    />
+  );
+}
+
 export default function Neighborhoods() {
   const navigate = useNavigate();
   const [listings, setListings] = useState([]);
@@ -53,7 +68,7 @@ export default function Neighborhoods() {
       description: "Trendy artistic hub with colorful streets, vintage shops, and a vibrant cultural scene. Perfect for young professionals and artists.",
       avgRent: "$1,200 - $1,800",
       vibe: ["Artistic", "Hipster", "Bike-Friendly", "Diverse"],
-      image: "https://images.unsplash.com/photo-1582735689115-3cc75c9f7b7b?w=800",
+      image: null,
       highlights: [
         { icon: Coffee, text: "Best cafés in Montreal" },
         { icon: Music, text: "Live music & nightlife" },
@@ -61,7 +76,7 @@ export default function Neighborhoods() {
         { icon: Trees, text: "Beautiful parks" }
       ],
       transit: "Excellent (Metro: Mont-Royal, Laurier)",
-      color: "from-orange-400 to-red-400"
+      color: "bg-brick-500"
     },
     {
       id: "rosemont",
@@ -78,7 +93,7 @@ export default function Neighborhoods() {
         { icon: Train, text: "Good metro access" }
       ],
       transit: "Good (Metro: Rosemont, Beaubien)",
-      color: "from-green-400 to-emerald-400"
+      color: "bg-emerald-700"
     },
     {
       id: "mile_end",
@@ -95,7 +110,7 @@ export default function Neighborhoods() {
         { icon: Music, text: "Indie music venues" }
       ],
       transit: "Excellent (Near Metro: Laurier)",
-      color: "from-purple-400 to-pink-400"
+      color: "bg-amber-700"
     },
     {
       id: "downtown",
@@ -112,7 +127,7 @@ export default function Neighborhoods() {
         { icon: UtensilsCrossed, text: "International cuisine" }
       ],
       transit: "Excellent (Multiple Metro lines)",
-      color: "from-blue-400 to-cyan-400"
+      color: "bg-sky-800"
     },
     {
       id: "ndg",
@@ -129,7 +144,7 @@ export default function Neighborhoods() {
         { icon: ShoppingBag, text: "Monkland Village shops" }
       ],
       transit: "Good (Metro: Vendôme, Villa-Maria)",
-      color: "from-teal-400 to-green-400"
+      color: "bg-teal-700"
     },
     {
       id: "griffintown",
@@ -146,7 +161,7 @@ export default function Neighborhoods() {
         { icon: Train, text: "Near metro & downtown" }
       ],
       transit: "Good (Metro: Bonaventure, Lucien-L'Allier)",
-      color: "from-indigo-400 to-purple-400"
+      color: "bg-brick-700"
     },
     {
       id: "verdun",
@@ -163,7 +178,7 @@ export default function Neighborhoods() {
         { icon: Train, text: "Metro access" }
       ],
       transit: "Good (Metro: De l'Église, Verdun)",
-      color: "from-cyan-400 to-blue-400"
+      color: "bg-cyan-800"
     },
     {
       id: "villeray",
@@ -180,7 +195,7 @@ export default function Neighborhoods() {
         { icon: DollarSign, text: "Good value" }
       ],
       transit: "Good (Metro: Jarry, Jean-Talon)",
-      color: "from-yellow-400 to-orange-400"
+      color: "bg-amber-600"
     },
     {
       id: "outremont",
@@ -197,7 +212,7 @@ export default function Neighborhoods() {
         { icon: Home, text: "Historic architecture" }
       ],
       transit: "Good (Metro: Outremont, Édouard-Montpetit)",
-      color: "from-rose-400 to-pink-400"
+      color: "bg-rose-800"
     },
     {
       id: "hochelaga",
@@ -214,7 +229,7 @@ export default function Neighborhoods() {
         { icon: Train, text: "Metro access" }
       ],
       transit: "Good (Metro: Pie-IX, Viau)",
-      color: "from-emerald-400 to-teal-400"
+      color: "bg-lime-800"
     }
   ];
 
@@ -233,17 +248,17 @@ export default function Neighborhoods() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-sand-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-brick-500 rounded-2xl flex items-center justify-center">
               <MapPin className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Explore Neighborhoods</h1>
-              <p className="text-gray-600">Discover the perfect Montreal neighborhood for your lifestyle</p>
+              <h1 className="text-3xl font-bold text-stone-900">Explore Neighborhoods</h1>
+              <p className="text-stone-600">Discover the perfect Montreal neighborhood for your lifestyle</p>
             </div>
           </div>
 
@@ -251,7 +266,7 @@ export default function Neighborhoods() {
           <Card className="shadow-lg border-none">
             <CardContent className="p-6">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-stone-400" />
                 <Input
                   placeholder="Search neighborhoods by name, vibe, or characteristics..."
                   value={searchTerm}
@@ -274,12 +289,8 @@ export default function Neighborhoods() {
             >
               <Card className="overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-none bg-white group">
                 {/* Neighborhood Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={neighborhood.image}
-                    alt={neighborhood.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                <div className={`relative h-48 overflow-hidden ${neighborhood.color}`}>
+                  <NeighborhoodImage src={neighborhood.image} alt={neighborhood.name} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   
                   {/* Neighborhood Name Overlay */}
@@ -296,7 +307,7 @@ export default function Neighborhoods() {
                   {/* Listing Count Badge */}
                   {getListingCount(neighborhood.id) > 0 && (
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-white/95 backdrop-blur-sm text-gray-800 border-0 shadow-lg">
+                      <Badge className="bg-white/95 backdrop-blur-sm text-stone-800 border-0 shadow-lg">
                         <Home className="w-3 h-3 mr-1" />
                         {getListingCount(neighborhood.id)} available
                       </Badge>
@@ -306,7 +317,7 @@ export default function Neighborhoods() {
 
                 <CardContent className="p-6">
                   {/* Description */}
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-stone-700 leading-relaxed mb-4">
                     {neighborhood.description}
                   </p>
 
@@ -315,7 +326,7 @@ export default function Neighborhoods() {
                     {neighborhood.vibe.map((vibe) => (
                       <Badge
                         key={vibe}
-                        className={`bg-gradient-to-r ${neighborhood.color} text-white border-0`}
+                        className={`${neighborhood.color} text-white border-0`}
                       >
                         {vibe}
                       </Badge>
@@ -323,34 +334,34 @@ export default function Neighborhoods() {
                   </div>
 
                   {/* Average Rent */}
-                  <div className="flex items-center gap-2 mb-4 p-3 bg-indigo-50 rounded-xl">
-                    <DollarSign className="w-5 h-5 text-indigo-600" />
+                  <div className="flex items-center gap-2 mb-4 p-3 bg-brick-50 rounded-xl">
+                    <DollarSign className="w-5 h-5 text-brick-600" />
                     <div>
-                      <p className="text-xs text-gray-600">Average Rent</p>
-                      <p className="font-bold text-indigo-600">{neighborhood.avgRent} CAD/month</p>
+                      <p className="text-xs text-stone-600">Average Rent</p>
+                      <p className="font-bold text-brick-600">{neighborhood.avgRent} CAD/month</p>
                     </div>
                   </div>
 
                   {/* Highlights */}
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     {neighborhood.highlights.map((highlight, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                        <highlight.icon className="w-4 h-4 text-indigo-500" />
+                      <div key={idx} className="flex items-center gap-2 text-sm text-stone-600">
+                        <highlight.icon className="w-4 h-4 text-brick-500" />
                         <span>{highlight.text}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Transit */}
-                  <div className="flex items-center gap-2 text-sm text-gray-600 mb-4 pb-4 border-b border-gray-100">
-                    <Train className="w-4 h-4 text-indigo-500" />
+                  <div className="flex items-center gap-2 text-sm text-stone-600 mb-4 pb-4 border-b border-stone-100">
+                    <Train className="w-4 h-4 text-brick-500" />
                     <span>{neighborhood.transit}</span>
                   </div>
 
                   {/* Action Button */}
                   <Button
                     onClick={() => handleExplore(neighborhood.id)}
-                    className={`w-full bg-gradient-to-r ${neighborhood.color} hover:opacity-90 text-white shadow-lg`}
+                    className={`w-full ${neighborhood.color} hover:opacity-90 text-white shadow-lg`}
                   >
                     Explore {neighborhood.shortName}
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -365,11 +376,11 @@ export default function Neighborhoods() {
         {filteredNeighborhoods.length === 0 && (
           <Card className="shadow-xl border-none">
             <CardContent className="p-12 text-center">
-              <MapPin className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <MapPin className="w-16 h-16 text-stone-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-stone-900 mb-2">
                 No neighborhoods found
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-stone-600 mb-6">
                 Try adjusting your search terms
               </p>
               <Button
@@ -384,20 +395,20 @@ export default function Neighborhoods() {
 
         {/* CTA Section */}
         <div className="mt-12">
-          <Card className="border-none shadow-xl bg-gradient-to-br from-indigo-500 to-purple-500 text-white overflow-hidden">
+          <Card className="border-none shadow-xl bg-brick-500 text-white overflow-hidden">
             <CardContent className="p-8 md:p-12 relative">
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold mb-4">
                   Still unsure where to live?
                 </h2>
-                <p className="text-indigo-100 text-lg mb-6 max-w-2xl">
+                <p className="text-brick-100 text-lg mb-6 max-w-2xl">
                   Let our AI match you with roommates first, then find the perfect neighborhood together based on your combined preferences!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     onClick={() => navigate(createPageUrl("BrowseRoommates"))}
                     size="lg"
-                    className="bg-white text-indigo-600 hover:bg-indigo-50 shadow-xl"
+                    className="bg-white text-brick-600 hover:bg-brick-50 shadow-xl"
                   >
                     Find Roommates First
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -415,7 +426,7 @@ export default function Neighborhoods() {
               
               {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-brick-700/20 rounded-full blur-3xl" />
             </CardContent>
           </Card>
         </div>

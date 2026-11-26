@@ -76,7 +76,7 @@ export default function Login() {
           {isSignUp ? "Already have an account? " : "New to ColocsMTL? "}
           <button
             type="button"
-            className="font-medium text-indigo-600 hover:underline"
+            className="font-medium text-brick-600 hover:underline"
             onClick={() => {
               setMode(isSignUp ? "signin" : "signup");
               setError("");
@@ -134,7 +134,7 @@ export default function Login() {
         <Button
           type="submit"
           disabled={submitting}
-          className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+          className="w-full bg-brick-500 hover:bg-brick-600 text-white"
         >
           {submitting ? "Please wait…" : isSignUp ? "Create account" : "Sign in"}
         </Button>

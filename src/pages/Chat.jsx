@@ -172,7 +172,7 @@ export default function Chat() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+      <div className="min-h-screen bg-sand-50 p-6">
         <div className="max-w-7xl mx-auto">
           <Skeleton className="h-12 w-64 mb-8" />
           <div className="grid grid-cols-12 gap-6">
@@ -193,17 +193,17 @@ export default function Chat() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-sand-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-brick-500 rounded-2xl flex items-center justify-center">
               <MessageCircle className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Messages</h1>
-              <p className="text-gray-600">{matches.length} conversations</p>
+              <h1 className="text-3xl font-bold text-stone-900">Messages</h1>
+              <p className="text-stone-600">{matches.length} conversations</p>
             </div>
           </div>
         </div>
@@ -211,18 +211,18 @@ export default function Chat() {
         {matches.length === 0 ? (
           <Card className="shadow-xl border-none">
             <CardContent className="p-12 text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <MessageCircle className="w-10 h-10 text-indigo-500" />
+              <div className="w-20 h-20 bg-brick-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <MessageCircle className="w-10 h-10 text-brick-500" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              <h2 className="text-2xl font-bold text-stone-900 mb-3">
                 No Conversations Yet
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-stone-600 mb-6">
                 Start matching with people to begin chatting!
               </p>
               <Button
                 onClick={() => navigate(createPageUrl("BrowseRoommates"))}
-                className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                className="bg-brick-500 hover:bg-brick-600 text-white"
               >
                 Find Roommates
               </Button>
@@ -236,7 +236,7 @@ export default function Chat() {
                 <CardContent className="p-4 flex-1 flex flex-col">
                   {/* Search */}
                   <div className="relative mb-4">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-stone-400" />
                     <Input
                       placeholder="Search conversations..."
                       value={searchTerm}
@@ -260,21 +260,21 @@ export default function Chat() {
                           onClick={() => handleSelectMatch(match)}
                           className={`p-4 rounded-xl cursor-pointer transition-all ${
                             selectedMatch?.id === match.id
-                              ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
-                              : 'bg-white hover:bg-indigo-50 border border-gray-100'
+                              ? 'bg-brick-500 text-white shadow-lg'
+                              : 'bg-white hover:bg-brick-50 border border-stone-100'
                           }`}
                         >
                           <div className="flex items-center gap-3">
                             <Avatar className="w-12 h-12 border-2 border-white">
                               <AvatarImage src={profile.profile_image_url} />
-                              <AvatarFallback className="bg-gradient-to-br from-indigo-400 to-purple-400 text-white font-semibold">
+                              <AvatarFallback className="bg-brick-400 text-white font-semibold">
                                 {profile.full_name?.charAt(0) || '?'}
                               </AvatarFallback>
                             </Avatar>
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center justify-between mb-1">
                                 <h3 className={`font-semibold truncate ${
-                                  selectedMatch?.id === match.id ? 'text-white' : 'text-gray-900'
+                                  selectedMatch?.id === match.id ? 'text-white' : 'text-stone-900'
                                 }`}>
                                   {profile.full_name}
                                 </h3>
@@ -284,7 +284,7 @@ export default function Chat() {
                                     className={`text-xs ${
                                       selectedMatch?.id === match.id 
                                         ? 'bg-white/20 border-white/30 text-white' 
-                                        : 'bg-indigo-50 border-indigo-200 text-indigo-700'
+                                        : 'bg-brick-50 border-brick-200 text-brick-700'
                                     }`}
                                   >
                                     {match.compatibility_score}%
@@ -292,7 +292,7 @@ export default function Chat() {
                                 )}
                               </div>
                               <p className={`text-sm truncate ${
-                                selectedMatch?.id === match.id ? 'text-indigo-100' : 'text-gray-500'
+                                selectedMatch?.id === match.id ? 'text-brick-100' : 'text-stone-500'
                               }`}>
                                 {profile.bio || 'Start a conversation...'}
                               </p>
@@ -312,7 +312,7 @@ export default function Chat() {
                 {selectedMatch ? (
                   <>
                     {/* Chat Header */}
-                    <div className="p-6 border-b border-gray-100 bg-white rounded-t-xl">
+                    <div className="p-6 border-b border-stone-100 bg-white rounded-t-xl">
                       <div className="flex items-center gap-4">
                         <Button
                           variant="ghost"
@@ -324,26 +324,26 @@ export default function Chat() {
                         </Button>
                         
                         <Avatar 
-                          className="w-12 h-12 border-2 border-indigo-200 cursor-pointer"
+                          className="w-12 h-12 border-2 border-brick-200 cursor-pointer"
                           onClick={() => navigate(createPageUrl("ProfileView") + `?email=${getOtherUserEmail(selectedMatch)}`)}
                         >
                           <AvatarImage src={getOtherProfile(selectedMatch)?.profile_image_url} />
-                          <AvatarFallback className="bg-gradient-to-br from-indigo-400 to-purple-400 text-white font-semibold">
+                          <AvatarFallback className="bg-brick-400 text-white font-semibold">
                             {getOtherProfile(selectedMatch)?.full_name?.charAt(0) || '?'}
                           </AvatarFallback>
                         </Avatar>
                         
                         <div className="flex-1">
-                          <h3 className="font-bold text-gray-900">
+                          <h3 className="font-bold text-stone-900">
                             {getOtherProfile(selectedMatch)?.full_name}
                           </h3>
                           <div className="flex items-center gap-2">
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm text-stone-500">
                               {getOtherProfile(selectedMatch)?.occupation?.replace(/_/g, ' ')}
                             </p>
                             {selectedMatch.compatibility_score && (
                               <>
-                                <span className="text-gray-300">•</span>
+                                <span className="text-stone-300">•</span>
                                 <div className="flex items-center gap-1">
                                   <Sparkles className="w-3 h-3 text-green-500" />
                                   <span className="text-sm font-semibold text-green-600">
@@ -366,7 +366,7 @@ export default function Chat() {
                     </div>
 
                     {/* Messages */}
-                    <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-br from-gray-50 to-indigo-50/30">
+                    <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-stone-50">
                       <AnimatePresence>
                         {messages.map((message, index) => {
                           const isMe = message.sender_email === user.email;
@@ -392,14 +392,14 @@ export default function Chat() {
                                   <div
                                     className={`rounded-2xl px-4 py-3 ${
                                       isMe
-                                        ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
-                                        : 'bg-white text-gray-900 shadow-md border border-gray-100'
+                                        ? 'bg-brick-500 text-white shadow-lg'
+                                        : 'bg-white text-stone-900 shadow-md border border-stone-100'
                                     }`}
                                   >
                                     <p className="text-sm leading-relaxed">{message.message_text}</p>
                                   </div>
                                   <p className={`text-xs mt-1 ${
-                                    isMe ? 'text-right text-gray-500' : 'text-left text-gray-500'
+                                    isMe ? 'text-right text-stone-500' : 'text-left text-stone-500'
                                   }`}>
                                     {format(new Date(message.sent_at || message.created_date), 'h:mm a')}
                                   </p>
@@ -412,13 +412,13 @@ export default function Chat() {
 
                       {messages.length === 0 && (
                         <div className="flex flex-col items-center justify-center h-full text-center">
-                          <div className="w-16 h-16 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mb-4">
-                            <Heart className="w-8 h-8 text-indigo-500" />
+                          <div className="w-16 h-16 bg-brick-100 rounded-full flex items-center justify-center mb-4">
+                            <Heart className="w-8 h-8 text-brick-500" />
                           </div>
-                          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          <h3 className="text-lg font-semibold text-stone-900 mb-2">
                             Start the conversation!
                           </h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-stone-600">
                             Say hello to your new potential roommate
                           </p>
                         </div>
@@ -426,7 +426,7 @@ export default function Chat() {
                     </div>
 
                     {/* Message Input */}
-                    <div className="p-6 border-t border-gray-100 bg-white rounded-b-xl">
+                    <div className="p-6 border-t border-stone-100 bg-white rounded-b-xl">
                       <form onSubmit={handleSendMessage} className="flex gap-3">
                         <Input
                           value={newMessage}
@@ -438,7 +438,7 @@ export default function Chat() {
                         <Button
                           type="submit"
                           disabled={!newMessage.trim() || sending}
-                          className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                          className="bg-brick-500 hover:bg-brick-600 text-white"
                         >
                           {sending ? (
                             "Sending..."
@@ -455,13 +455,13 @@ export default function Chat() {
                 ) : (
                   <CardContent className="flex-1 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <MessageCircle className="w-10 h-10 text-indigo-500" />
+                      <div className="w-20 h-20 bg-brick-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <MessageCircle className="w-10 h-10 text-brick-500" />
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h3 className="text-xl font-semibold text-stone-900 mb-2">
                         Select a conversation
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-stone-600">
                         Choose from your matches to start chatting
                       </p>
                     </div>

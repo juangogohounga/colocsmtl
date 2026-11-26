@@ -87,12 +87,12 @@ export default function Matches() {
       return (
         <Card className="shadow-xl border-none">
           <CardContent className="p-12 text-center">
-            <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">{emptyMessage}</h3>
-            <p className="text-gray-600 mb-6">Keep swiping to find your perfect match!</p>
+            <Heart className="w-16 h-16 text-stone-300 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-stone-900 mb-2">{emptyMessage}</h3>
+            <p className="text-stone-600 mb-6">Keep swiping to find your perfect match!</p>
             <Button
               onClick={() => navigate(createPageUrl("BrowseRoommates"))}
-              className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+              className="bg-brick-500 hover:bg-brick-600 text-white"
             >
               Browse Roommates
             </Button>
@@ -129,7 +129,7 @@ export default function Matches() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+      <div className="min-h-screen bg-sand-50 p-6">
         <div className="max-w-7xl mx-auto">
           <Skeleton className="h-12 w-64 mb-8" />
           <Skeleton className="h-12 w-full mb-6" />
@@ -154,17 +154,17 @@ export default function Matches() {
   const likesReceived = getLikesReceived();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-sand-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-500 rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-brick-500 rounded-2xl flex items-center justify-center">
               <Heart className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">My Matches</h1>
-              <p className="text-gray-600">
+              <h1 className="text-3xl font-bold text-stone-900">My Matches</h1>
+              <p className="text-stone-600">
                 {mutualMatches.length} mutual {mutualMatches.length === 1 ? "match" : "matches"}
               </p>
             </div>
@@ -174,31 +174,31 @@ export default function Matches() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <Card className="border-none shadow-lg">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-3">
                   <Heart className="w-6 h-6 text-green-600" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1">{mutualMatches.length}</div>
-                <div className="text-sm text-gray-600">Mutual Matches</div>
+                <div className="text-3xl font-bold text-stone-900 mb-1">{mutualMatches.length}</div>
+                <div className="text-sm text-stone-600">Mutual Matches</div>
               </CardContent>
             </Card>
 
             <Card className="border-none shadow-lg">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Sparkles className="w-6 h-6 text-indigo-600" />
+                <div className="w-12 h-12 bg-brick-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Sparkles className="w-6 h-6 text-brick-600" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1">{myLikes.length}</div>
-                <div className="text-sm text-gray-600">People You Liked</div>
+                <div className="text-3xl font-bold text-stone-900 mb-1">{myLikes.length}</div>
+                <div className="text-sm text-stone-600">People You Liked</div>
               </CardContent>
             </Card>
 
             <Card className="border-none shadow-lg">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-pink-100 to-red-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-pink-600" />
+                <div className="w-12 h-12 bg-sand-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Users className="w-6 h-6 text-brick-600" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1">{likesReceived.length}</div>
-                <div className="text-sm text-gray-600">People Who Liked You</div>
+                <div className="text-3xl font-bold text-stone-900 mb-1">{likesReceived.length}</div>
+                <div className="text-sm text-stone-600">People Who Liked You</div>
               </CardContent>
             </Card>
           </div>
@@ -209,21 +209,21 @@ export default function Matches() {
           <TabsList className="grid w-full grid-cols-3 mb-6 bg-white shadow-lg rounded-xl p-1">
             <TabsTrigger 
               value="mutual" 
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:text-white rounded-lg"
+              className="data-[state=active]: data-[state=active]:bg-brick-500 data-[state=active]: data-[state=active]:text-white rounded-lg"
             >
               <Heart className="w-4 h-4 mr-2" />
               Mutual ({mutualMatches.length})
             </TabsTrigger>
             <TabsTrigger 
               value="likes" 
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:text-white rounded-lg"
+              className="data-[state=active]: data-[state=active]:bg-brick-500 data-[state=active]: data-[state=active]:text-white rounded-lg"
             >
               <Sparkles className="w-4 h-4 mr-2" />
               My Likes ({myLikes.length})
             </TabsTrigger>
             <TabsTrigger 
               value="received" 
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:text-white rounded-lg"
+              className="data-[state=active]: data-[state=active]:bg-brick-500 data-[state=active]: data-[state=active]:text-white rounded-lg"
             >
               <Users className="w-4 h-4 mr-2" />
               Received ({likesReceived.length})

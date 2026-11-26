@@ -9,7 +9,39 @@ module.exports = {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+  		fontFamily: {
+  			sans: ['"DM Sans Variable"', 'system-ui', 'sans-serif'],
+  			display: ['"Fraunces Variable"', 'Georgia', 'serif']
+  		},
   		colors: {
+  			// Plateau brick: the primary brand color.
+  			brick: {
+  				50: '#FBF1EE',
+  				100: '#F6DED7',
+  				200: '#EDBBAE',
+  				300: '#E0917E',
+  				400: '#CF6A52',
+  				500: '#B4442C',
+  				600: '#9A3824',
+  				700: '#7D2D1E',
+  				800: '#5F2318',
+  				900: '#431912',
+  				950: '#2A0F0A'
+  			},
+  			// Cream and warm sand: backgrounds and soft surfaces.
+  			sand: {
+  				50: '#FBF7F2',
+  				100: '#F5EDE3',
+  				200: '#EADBC8',
+  				300: '#DCC3A5',
+  				400: '#C9A27A',
+  				500: '#B08452',
+  				600: '#8F6A40',
+  				700: '#6E5132',
+  				800: '#4F3A24',
+  				900: '#33261A',
+  				950: '#1F1710'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

@@ -89,7 +89,7 @@ export default function BrowseListings() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+      <div className="min-h-screen bg-sand-50 p-6">
         <div className="max-w-7xl mx-auto">
           <Skeleton className="h-12 w-64 mb-8" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -109,24 +109,24 @@ export default function BrowseListings() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-sand-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-brick-500 rounded-2xl flex items-center justify-center">
                 <Building2 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Browse Rooms</h1>
-                <p className="text-gray-600">{filteredListings.length} available listings</p>
+                <h1 className="text-3xl font-bold text-stone-900">Browse Rooms</h1>
+                <p className="text-stone-600">{filteredListings.length} available listings</p>
               </div>
             </div>
 
             <Button
               onClick={() => navigate(createPageUrl("CreateListing"))}
-              className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white shadow-lg"
+              className="bg-brick-500 hover:bg-brick-600 text-white shadow-lg"
             >
               <Plus className="w-4 h-4 mr-2" />
               Post a Room
@@ -138,7 +138,7 @@ export default function BrowseListings() {
             <CardContent className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-stone-400" />
                   <Input
                     placeholder="Search listings..."
                     value={searchTerm}
@@ -165,8 +165,8 @@ export default function BrowseListings() {
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-gray-600">Max Price</span>
-                    <span className="text-sm font-semibold text-indigo-600">${maxPrice}</span>
+                    <span className="text-sm text-stone-600">Max Price</span>
+                    <span className="text-sm font-semibold text-brick-600">${maxPrice}</span>
                   </div>
                   <Input
                     type="range"
@@ -186,12 +186,12 @@ export default function BrowseListings() {
         {filteredListings.length === 0 ? (
           <Card className="shadow-xl border-none">
             <CardContent className="p-12 text-center">
-              <Building2 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No listings found</h3>
-              <p className="text-gray-600 mb-6">Try adjusting your filters or be the first to post a room!</p>
+              <Building2 className="w-16 h-16 text-stone-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-stone-900 mb-2">No listings found</h3>
+              <p className="text-stone-600 mb-6">Try adjusting your filters or be the first to post a room!</p>
               <Button
                 onClick={() => navigate(createPageUrl("CreateListing"))}
-                className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                className="bg-brick-500 hover:bg-brick-600 text-white"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Post a Room
@@ -210,7 +210,7 @@ export default function BrowseListings() {
                 <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-none bg-white group cursor-pointer">
                   <div 
                     onClick={() => navigate(createPageUrl("ListingDetails") + `?id=${listing.id}`)}
-                    className="relative h-48 bg-gradient-to-br from-indigo-200 to-purple-200"
+                    className="relative h-48 bg-brick-200"
                   >
                     {listing.images && listing.images.length > 0 ? (
                       <img
@@ -220,13 +220,13 @@ export default function BrowseListings() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <Building2 className="w-16 h-16 text-indigo-300" />
+                        <Building2 className="w-16 h-16 text-brick-300" />
                       </div>
                     )}
 
                     {listing.is_featured && (
                       <div className="absolute top-3 left-3">
-                        <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white border-0 shadow-lg">
+                        <Badge className="bg-amber-600 text-white border-0 shadow-lg">
                           <Sparkles className="w-3 h-3 mr-1" />
                           Featured
                         </Badge>
@@ -234,18 +234,18 @@ export default function BrowseListings() {
                     )}
 
                     <div className="absolute top-3 right-3">
-                      <Badge className="bg-white/95 backdrop-blur-sm text-gray-800 border-0 shadow-lg">
+                      <Badge className="bg-white/95 backdrop-blur-sm text-stone-800 border-0 shadow-lg">
                         {listing.listing_type?.replace(/_/g, " ")}
                       </Badge>
                     </div>
                   </div>
 
                   <CardContent className="p-5" onClick={() => navigate(createPageUrl("ListingDetails") + `?id=${listing.id}`)}>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1">
+                    <h3 className="text-lg font-bold text-stone-900 mb-2 line-clamp-1">
                       {listing.title}
                     </h3>
 
-                    <div className="flex items-center gap-2 text-gray-600 mb-3">
+                    <div className="flex items-center gap-2 text-stone-600 mb-3">
                       <MapPin className="w-4 h-4" />
                       <span className="text-sm capitalize">
                         {listing.neighborhood?.replace(/_/g, " ")}
@@ -254,11 +254,11 @@ export default function BrowseListings() {
 
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-baseline gap-1">
-                        <DollarSign className="w-5 h-5 text-indigo-600" />
-                        <span className="text-2xl font-bold text-indigo-600">
+                        <DollarSign className="w-5 h-5 text-brick-600" />
+                        <span className="text-2xl font-bold text-brick-600">
                           {listing.rent_amount}
                         </span>
-                        <span className="text-sm text-gray-500">/month</span>
+                        <span className="text-sm text-stone-500">/month</span>
                       </div>
                       
                       {listing.utilities_included && (
@@ -268,7 +268,7 @@ export default function BrowseListings() {
                       )}
                     </div>
 
-                    <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                    <div className="flex items-center gap-4 text-sm text-stone-600 mb-4">
                       {listing.bedrooms && (
                         <div className="flex items-center gap-1">
                           <Bed className="w-4 h-4" />
@@ -289,7 +289,7 @@ export default function BrowseListings() {
                           <Badge 
                             key={amenity} 
                             variant="outline" 
-                            className="text-xs bg-indigo-50 text-indigo-700 border-indigo-200"
+                            className="text-xs bg-brick-50 text-brick-700 border-brick-200"
                           >
                             {amenity.replace(/_/g, " ")}
                           </Badge>

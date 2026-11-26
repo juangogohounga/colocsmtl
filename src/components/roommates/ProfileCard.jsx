@@ -19,8 +19,8 @@ import { motion } from "framer-motion";
 export default function ProfileCard({ profile, onLike, onPass, showActions = true, onMessage }) {
   const getCompatibilityColor = (score) => {
     if (score >= 80) return "text-green-500";
-    if (score >= 60) return "text-yellow-500";
-    return "text-gray-500";
+    if (score >= 60) return "text-amber-600";
+    return "text-stone-500";
   };
 
   const getSleepIcon = () => {
@@ -38,7 +38,7 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
     >
       <Card className="overflow-hidden shadow-2xl border-none bg-white hover:shadow-3xl transition-all duration-300">
         {/* Profile Image */}
-        <div className="relative h-80 bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200">
+        <div className="relative h-80 bg-brick-200">
           {profile.profile_image_url ? (
             <img 
               src={profile.profile_image_url} 
@@ -48,7 +48,7 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <Avatar className="w-40 h-40">
-                <AvatarFallback className="bg-gradient-to-br from-indigo-500 to-purple-500 text-white text-5xl font-bold">
+                <AvatarFallback className="bg-brick-500 text-white text-5xl font-bold">
                   {profile.full_name?.charAt(0) || "?"}
                 </AvatarFallback>
               </Avatar>
@@ -65,14 +65,14 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
                     {profile.compatibility_score}%
                   </span>
                 </div>
-                <p className="text-xs text-gray-600 text-center">Match</p>
+                <p className="text-xs text-stone-600 text-center">Match</p>
               </div>
             </div>
           )}
 
           {/* Looking For Badge */}
           <div className="absolute top-4 left-4">
-            <Badge className="bg-white/95 backdrop-blur-sm text-gray-800 border-0 shadow-lg">
+            <Badge className="bg-white/95 backdrop-blur-sm text-stone-800 border-0 shadow-lg">
               <Home className="w-3 h-3 mr-1" />
               Looking for {profile.looking_for === "both" ? "Room & Roommate" : profile.looking_for}
             </Badge>
@@ -80,7 +80,7 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
 
           {profile.is_premium && (
             <div className="absolute bottom-4 left-4">
-              <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white border-0 shadow-lg">
+              <Badge className="bg-amber-600 text-white border-0 shadow-lg">
                 <Sparkles className="w-3 h-3 mr-1" />
                 Premium
               </Badge>
@@ -93,23 +93,23 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
           <div className="mb-4">
             <div className="flex items-start justify-between mb-2">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900">{profile.full_name}</h3>
-                <p className="text-gray-600">{profile.age} • {profile.occupation?.replace(/_/g, " ")}</p>
+                <h3 className="text-2xl font-bold text-stone-900">{profile.full_name}</h3>
+                <p className="text-stone-600">{profile.age} • {profile.occupation?.replace(/_/g, " ")}</p>
               </div>
             </div>
 
             {profile.bio && (
-              <p className="text-gray-700 leading-relaxed mb-4">{profile.bio}</p>
+              <p className="text-stone-700 leading-relaxed mb-4">{profile.bio}</p>
             )}
           </div>
 
           {/* Quick Stats */}
           <div className="grid grid-cols-2 gap-3 mb-4">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-stone-600">
               {getSleepIcon()}
               <span className="capitalize">{profile.sleep_schedule?.replace(/_/g, " ")}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-stone-600">
               <Briefcase className="w-4 h-4" />
               <span>{profile.work_from_home ? "Works from home" : "Works outside"}</span>
             </div>
@@ -117,9 +117,9 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
 
           {/* Budget */}
           {profile.budget_min && profile.budget_max && (
-            <div className="mb-4 p-3 bg-indigo-50 rounded-xl">
-              <p className="text-sm text-gray-600 mb-1">Budget Range</p>
-              <p className="font-bold text-indigo-600">
+            <div className="mb-4 p-3 bg-brick-50 rounded-xl">
+              <p className="text-sm text-stone-600 mb-1">Budget Range</p>
+              <p className="font-bold text-brick-600">
                 ${profile.budget_min} - ${profile.budget_max} CAD/month
               </p>
             </div>
@@ -129,8 +129,8 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
           {profile.preferred_neighborhoods && profile.preferred_neighborhoods.length > 0 && (
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-4 h-4 text-gray-500" />
-                <span className="text-sm font-medium text-gray-700">Preferred Areas</span>
+                <MapPin className="w-4 h-4 text-stone-500" />
+                <span className="text-sm font-medium text-stone-700">Preferred Areas</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {profile.preferred_neighborhoods.slice(0, 3).map((hood) => (
@@ -150,12 +150,12 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
           {/* Vibe Tags */}
           {profile.vibe_tags && profile.vibe_tags.length > 0 && (
             <div className="mb-4">
-              <p className="text-sm font-medium text-gray-700 mb-2">Vibe</p>
+              <p className="text-sm font-medium text-stone-700 mb-2">Vibe</p>
               <div className="flex flex-wrap gap-2">
                 {profile.vibe_tags.slice(0, 5).map((vibe) => (
                   <Badge 
                     key={vibe} 
-                    className="bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border-0"
+                    className="bg-brick-100 text-brick-700 border-0"
                   >
                     {vibe.replace(/_/g, " ")}
                   </Badge>
@@ -167,25 +167,25 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
           {/* Lifestyle Meters */}
           <div className="space-y-3 mb-6">
             <div>
-              <div className="flex justify-between text-xs text-gray-600 mb-1">
+              <div className="flex justify-between text-xs text-stone-600 mb-1">
                 <span>Cleanliness</span>
                 <span>{profile.cleanliness_level}/5</span>
               </div>
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-2 bg-stone-100 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full transition-all"
+                  className="h-full bg-brick-400 rounded-full transition-all"
                   style={{ width: `${(profile.cleanliness_level / 5) * 100}%` }}
                 />
               </div>
             </div>
             <div>
-              <div className="flex justify-between text-xs text-gray-600 mb-1">
+              <div className="flex justify-between text-xs text-stone-600 mb-1">
                 <span>Noise Tolerance</span>
                 <span>{profile.noise_tolerance}/5</span>
               </div>
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-2 bg-stone-100 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-gradient-to-r from-pink-400 to-orange-400 rounded-full transition-all"
+                  className="h-full bg-brick-400 rounded-full transition-all"
                   style={{ width: `${(profile.noise_tolerance / 5) * 100}%` }}
                 />
               </div>
@@ -200,9 +200,9 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
                   variant="outline"
                   size="lg"
                   onClick={() => onPass(profile)}
-                  className="flex-1 border-2 border-gray-300 hover:border-red-400 hover:bg-red-50 transition-all"
+                  className="flex-1 border-2 border-stone-300 hover:border-red-400 hover:bg-red-50 transition-all"
                 >
-                  <X className="w-5 h-5 text-gray-600" />
+                  <X className="w-5 h-5 text-stone-600" />
                 </Button>
               )}
               
@@ -211,9 +211,9 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
                   variant="outline"
                   size="lg"
                   onClick={() => onMessage(profile)}
-                  className="flex-1 border-2 border-indigo-300 hover:border-indigo-500 hover:bg-indigo-50 transition-all"
+                  className="flex-1 border-2 border-brick-300 hover:border-brick-500 hover:bg-brick-50 transition-all"
                 >
-                  <MessageCircle className="w-5 h-5 text-indigo-600" />
+                  <MessageCircle className="w-5 h-5 text-brick-600" />
                 </Button>
               )}
               
@@ -221,7 +221,7 @@ export default function ProfileCard({ profile, onLike, onPass, showActions = tru
                 <Button
                   size="lg"
                   onClick={() => onLike(profile)}
-                  className="flex-1 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white shadow-lg hover:shadow-xl transition-all"
+                  className="flex-1 bg-brick-500 hover:bg-brick-600 text-white shadow-lg hover:shadow-xl transition-all"
                 >
                   <Heart className="w-5 h-5 mr-2" />
                   Like

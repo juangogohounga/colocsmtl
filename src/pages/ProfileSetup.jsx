@@ -122,7 +122,7 @@ export default function ProfileSetup() {
   const neighborhoodOptions = ["le_plateau", "rosemont", "ndg", "mile_end", "verdun", "hochelaga", "villeray", "downtown", "outremont", "griffintown"];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-sand-50 p-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -136,21 +136,21 @@ export default function ProfileSetup() {
           </Button>
           
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-brick-500 rounded-2xl flex items-center justify-center">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-stone-900">
                 {existingProfile ? "Edit Your Profile" : "Create Your Profile"}
               </h1>
-              <p className="text-gray-600">Step {step} of 3</p>
+              <p className="text-stone-600">Step {step} of 3</p>
             </div>
           </div>
 
           {/* Progress Bar */}
-          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-stone-200 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300"
+              className="h-full bg-brick-500 transition-all duration-300"
               style={{ width: `${(step / 3) * 100}%` }}
             />
           </div>
@@ -167,7 +167,7 @@ export default function ProfileSetup() {
               <div className="flex flex-col items-center gap-4">
                 <div className="relative">
                   {formData.profile_image_url ? (
-                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-indigo-200">
+                    <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-brick-200">
                       <img src={formData.profile_image_url} alt="Profile" className="w-full h-full object-cover" />
                       <button
                         onClick={() => setFormData({ ...formData, profile_image_url: "" })}
@@ -177,14 +177,14 @@ export default function ProfileSetup() {
                       </button>
                     </div>
                   ) : (
-                    <label className="w-32 h-32 rounded-full border-4 border-dashed border-indigo-300 flex flex-col items-center justify-center cursor-pointer hover:border-indigo-500 transition-all bg-indigo-50">
-                      <Upload className="w-8 h-8 text-indigo-400 mb-1" />
-                      <span className="text-xs text-indigo-600">Upload Photo</span>
+                    <label className="w-32 h-32 rounded-full border-4 border-dashed border-brick-300 flex flex-col items-center justify-center cursor-pointer hover:border-brick-500 transition-all bg-brick-50">
+                      <Upload className="w-8 h-8 text-brick-400 mb-1" />
+                      <span className="text-xs text-brick-600">Upload Photo</span>
                       <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
                     </label>
                   )}
                 </div>
-                {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
+                {uploading && <p className="text-sm text-stone-500">Uploading...</p>}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -274,7 +274,7 @@ export default function ProfileSetup() {
 
               <Button 
                 onClick={() => setStep(2)} 
-                className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                className="w-full bg-brick-500 hover:bg-brick-600 text-white"
                 size="lg"
               >
                 Continue
@@ -356,7 +356,7 @@ export default function ProfileSetup() {
                     step={1}
                     className="mt-2"
                   />
-                  <p className="text-xs text-gray-500 mt-1">1 = Very Messy, 5 = Very Clean</p>
+                  <p className="text-xs text-stone-500 mt-1">1 = Very Messy, 5 = Very Clean</p>
                 </div>
 
                 <div>
@@ -369,7 +369,7 @@ export default function ProfileSetup() {
                     step={1}
                     className="mt-2"
                   />
-                  <p className="text-xs text-gray-500 mt-1">1 = Need Silence, 5 = Love Noise</p>
+                  <p className="text-xs text-stone-500 mt-1">1 = Need Silence, 5 = Love Noise</p>
                 </div>
               </div>
 
@@ -377,7 +377,7 @@ export default function ProfileSetup() {
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <Label>Smoking</Label>
-                    <p className="text-xs text-gray-500">Do you smoke?</p>
+                    <p className="text-xs text-stone-500">Do you smoke?</p>
                   </div>
                   <Switch
                     checked={formData.smoking}
@@ -388,7 +388,7 @@ export default function ProfileSetup() {
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <Label>Pets</Label>
-                    <p className="text-xs text-gray-500">Do you have pets?</p>
+                    <p className="text-xs text-stone-500">Do you have pets?</p>
                   </div>
                   <Switch
                     checked={formData.pets}
@@ -399,7 +399,7 @@ export default function ProfileSetup() {
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <Label>Work From Home</Label>
-                    <p className="text-xs text-gray-500">Do you WFH?</p>
+                    <p className="text-xs text-stone-500">Do you WFH?</p>
                   </div>
                   <Switch
                     checked={formData.work_from_home}
@@ -417,8 +417,8 @@ export default function ProfileSetup() {
                       variant={formData.vibe_tags?.includes(vibe) ? "default" : "outline"}
                       className={`cursor-pointer transition-all ${
                         formData.vibe_tags?.includes(vibe) 
-                          ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white" 
-                          : "hover:bg-indigo-50"
+                          ? "bg-brick-500 text-white" 
+                          : "hover:bg-brick-50"
                       }`}
                       onClick={() => toggleArrayItem("vibe_tags", vibe)}
                     >
@@ -440,7 +440,7 @@ export default function ProfileSetup() {
                 </Button>
                 <Button 
                   onClick={() => setStep(3)} 
-                  className="flex-1 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                  className="flex-1 bg-brick-500 hover:bg-brick-600 text-white"
                   size="lg"
                 >
                   Continue
@@ -478,7 +478,7 @@ export default function ProfileSetup() {
                     />
                   </div>
                 </div>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-stone-500">
                   ${formData.budget_min} - ${formData.budget_max} per month
                 </p>
               </div>
@@ -492,8 +492,8 @@ export default function ProfileSetup() {
                       variant={formData.preferred_neighborhoods?.includes(hood) ? "default" : "outline"}
                       className={`cursor-pointer transition-all ${
                         formData.preferred_neighborhoods?.includes(hood) 
-                          ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white" 
-                          : "hover:bg-indigo-50"
+                          ? "bg-brick-500 text-white" 
+                          : "hover:bg-brick-50"
                       }`}
                       onClick={() => toggleArrayItem("preferred_neighborhoods", hood)}
                     >
@@ -516,7 +516,7 @@ export default function ProfileSetup() {
                 <Button 
                   onClick={handleSubmit}
                   disabled={saving}
-                  className="flex-1 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                  className="flex-1 bg-brick-500 hover:bg-brick-600 text-white"
                   size="lg"
                 >
                   {saving ? "Saving..." : existingProfile ? "Update Profile" : "Complete Profile"}

@@ -161,7 +161,7 @@ export default function CreateListing() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-sand-50 p-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -175,19 +175,19 @@ export default function CreateListing() {
           </Button>
           
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-brick-500 rounded-2xl flex items-center justify-center">
               <Home className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Post a Room Listing</h1>
-              <p className="text-gray-600">Step {step} of 3</p>
+              <h1 className="text-3xl font-bold text-stone-900">Post a Room Listing</h1>
+              <p className="text-stone-600">Step {step} of 3</p>
             </div>
           </div>
 
           {/* Progress Bar */}
-          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-stone-200 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300"
+              className="h-full bg-brick-500 transition-all duration-300"
               style={{ width: `${(step / 3) * 100}%` }}
             />
           </div>
@@ -305,7 +305,7 @@ export default function CreateListing() {
 
               <Button 
                 onClick={() => setStep(2)} 
-                className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                className="w-full bg-brick-500 hover:bg-brick-600 text-white"
                 size="lg"
                 disabled={!formData.title || !formData.description || !formData.listing_type || !formData.rent_amount || !formData.neighborhood || !formData.available_from || !formData.lease_duration}
               >
@@ -360,7 +360,7 @@ export default function CreateListing() {
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <Label>Utilities Included</Label>
-                    <p className="text-xs text-gray-500">Heat, water, electricity</p>
+                    <p className="text-xs text-stone-500">Heat, water, electricity</p>
                   </div>
                   <Switch
                     checked={formData.utilities_included}
@@ -371,7 +371,7 @@ export default function CreateListing() {
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <Label>Furnished</Label>
-                    <p className="text-xs text-gray-500">Includes furniture</p>
+                    <p className="text-xs text-stone-500">Includes furniture</p>
                   </div>
                   <Switch
                     checked={formData.furnished}
@@ -389,8 +389,8 @@ export default function CreateListing() {
                       variant={formData.amenities?.includes(amenity) ? "default" : "outline"}
                       className={`cursor-pointer transition-all ${
                         formData.amenities?.includes(amenity) 
-                          ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white" 
-                          : "hover:bg-indigo-50"
+                          ? "bg-brick-500 text-white" 
+                          : "hover:bg-brick-50"
                       }`}
                       onClick={() => toggleAmenity(amenity)}
                     >
@@ -405,10 +405,10 @@ export default function CreateListing() {
                 <Label>Current Roommates (Optional)</Label>
                 <div className="space-y-2">
                   {formData.current_roommates.map((roommate, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 bg-indigo-50 rounded-lg">
+                    <div key={index} className="flex items-center gap-3 p-3 bg-brick-50 rounded-lg">
                       <div className="flex-1">
-                        <p className="font-medium text-gray-900">{roommate.name}</p>
-                        <p className="text-sm text-gray-600">{roommate.age} years • {roommate.occupation}</p>
+                        <p className="font-medium text-stone-900">{roommate.name}</p>
+                        <p className="text-sm text-stone-600">{roommate.age} years • {roommate.occupation}</p>
                       </div>
                       <Button
                         variant="ghost"
@@ -463,7 +463,7 @@ export default function CreateListing() {
                 </Button>
                 <Button 
                   onClick={() => setStep(3)} 
-                  className="flex-1 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                  className="flex-1 bg-brick-500 hover:bg-brick-600 text-white"
                   size="lg"
                 >
                   Continue
@@ -501,9 +501,9 @@ export default function CreateListing() {
                     </div>
                   ))}
                   
-                  <label className="h-32 border-4 border-dashed border-indigo-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-indigo-500 transition-all bg-indigo-50">
-                    <Upload className="w-8 h-8 text-indigo-400 mb-1" />
-                    <span className="text-xs text-indigo-600">Upload Photos</span>
+                  <label className="h-32 border-4 border-dashed border-brick-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-brick-500 transition-all bg-brick-50">
+                    <Upload className="w-8 h-8 text-brick-400 mb-1" />
+                    <span className="text-xs text-brick-600">Upload Photos</span>
                     <input 
                       type="file" 
                       accept="image/*" 
@@ -513,7 +513,7 @@ export default function CreateListing() {
                     />
                   </label>
                 </div>
-                {uploading && <p className="text-sm text-gray-500">Uploading images...</p>}
+                {uploading && <p className="text-sm text-stone-500">Uploading images...</p>}
               </div>
 
               {/* House Rules */}
@@ -521,8 +521,8 @@ export default function CreateListing() {
                 <Label>House Rules (Optional)</Label>
                 <div className="space-y-2">
                   {formData.rules.map((rule, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                      <span className="flex-1 text-gray-700">{rule}</span>
+                    <div key={index} className="flex items-center gap-3 p-3 bg-stone-50 rounded-lg">
+                      <span className="flex-1 text-stone-700">{rule}</span>
                       <Button
                         variant="ghost"
                         size="icon"
@@ -564,7 +564,7 @@ export default function CreateListing() {
                 <Button 
                   onClick={handleSubmit}
                   disabled={saving}
-                  className="flex-1 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                  className="flex-1 bg-brick-500 hover:bg-brick-600 text-white"
                   size="lg"
                 >
                   {saving ? "Creating Listing..." : "Publish Listing"}

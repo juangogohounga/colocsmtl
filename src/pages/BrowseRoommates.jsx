@@ -132,7 +132,7 @@ export default function BrowseRoommates() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+      <div className="min-h-screen bg-sand-50 p-6">
         <div className="max-w-2xl mx-auto">
           <Skeleton className="h-12 w-64 mb-8" />
           <Card className="shadow-2xl">
@@ -151,18 +151,18 @@ export default function BrowseRoommates() {
   const currentProfile = profiles[currentIndex];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-sand-50 p-6">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-brick-500 rounded-2xl flex items-center justify-center">
                 <Users className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Find Roommates</h1>
-                <p className="text-gray-600">
+                <h1 className="text-3xl font-bold text-stone-900">Find Roommates</h1>
+                <p className="text-stone-600">
                   {profiles.length - currentIndex} {profiles.length - currentIndex === 1 ? "profile" : "profiles"} to explore
                 </p>
               </div>
@@ -178,9 +178,9 @@ export default function BrowseRoommates() {
           </div>
 
           {calculating && (
-            <div className="bg-indigo-100 border border-indigo-300 rounded-xl p-4 flex items-center gap-3">
-              <Sparkles className="w-5 h-5 text-indigo-600 animate-pulse" />
-              <p className="text-sm text-indigo-800">AI is calculating compatibility...</p>
+            <div className="bg-brick-100 border border-brick-300 rounded-xl p-4 flex items-center gap-3">
+              <Sparkles className="w-5 h-5 text-brick-600 animate-pulse" />
+              <p className="text-sm text-brick-800">AI is calculating compatibility...</p>
             </div>
           )}
         </div>
@@ -203,19 +203,19 @@ export default function BrowseRoommates() {
             >
               <Card className="shadow-2xl border-none">
                 <CardContent className="p-12 text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Sparkles className="w-10 h-10 text-indigo-500" />
+                  <div className="w-20 h-20 bg-brick-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Sparkles className="w-10 h-10 text-brick-500" />
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                  <h2 className="text-2xl font-bold text-stone-900 mb-3">
                     You've Seen Everyone!
                   </h2>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-stone-600 mb-6">
                     Check your matches or browse room listings
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <Button
                       onClick={() => navigate(createPageUrl("Matches"))}
-                      className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white"
+                      className="bg-brick-500 hover:bg-brick-600 text-white"
                     >
                       View Matches
                       <ArrowRight className="w-4 h-4 ml-2" />
@@ -236,12 +236,12 @@ export default function BrowseRoommates() {
         {/* Progress Indicator */}
         {profiles.length > 0 && currentIndex < profiles.length && (
           <div className="mt-6">
-            <div className="flex items-center justify-center gap-2 text-sm text-gray-600 mb-2">
+            <div className="flex items-center justify-center gap-2 text-sm text-stone-600 mb-2">
               <span>{currentIndex + 1} of {profiles.length}</span>
             </div>
-            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-2 bg-stone-200 rounded-full overflow-hidden">
               <div 
-                className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300"
+                className="h-full bg-brick-500 transition-all duration-300"
                 style={{ width: `${((currentIndex + 1) / profiles.length) * 100}%` }}
               />
             </div>
